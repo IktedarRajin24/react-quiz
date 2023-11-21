@@ -4,6 +4,11 @@ import React from "react";
 
 const Question = ({ question, dispatch, answer }) => {
   const hasAnswered = answer !== null;
+  // const answerColor = hasAnswered
+  //   ? index === question.correctOption
+  //     ? "bg-blue-600"
+  //     : "bg-orange-500"
+  //   : "";
   return (
     <div className="w-9/12 mx-auto flex justify-center items-center text-white flex-col">
       <h3 className="text-3xl my-5">{question.question}</h3>
@@ -15,15 +20,16 @@ const Question = ({ question, dispatch, answer }) => {
               hasAnswered
                 ? ""
                 : "hover:bg-slate-800 hover:text-white cursor-pointer hover:ms-5"
-            }  ${index === answer ? "ms-5" : ""} ${
-              hasAnswered
-                ? index === question.correctOption
-                  ? "bg-blue-400"
-                  : "bg-orange-400"
-                : ""
-            }`}
+            }  ${index === answer ? "ms-5" : ""}`}
             onClick={() => dispatch({ type: "newAnswer", payload: index })}
             disabled={hasAnswered}
+            style={
+              hasAnswered
+                ? index === question.correctOption
+                  ? { backgroundColor: "#4169E1" }
+                  : { backgroundColor: "#FF7518" }
+                : {}
+            }
           >
             {option}
           </button>

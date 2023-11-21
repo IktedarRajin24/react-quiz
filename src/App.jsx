@@ -97,7 +97,7 @@ function App() {
       .catch((error) => dispatch({ type: "dataFailed" }));
   }, []);
   return (
-    <div className="bg-slate-600 h-screen">
+    <div className="bg-slate-600 min-h-auto pb-60">
       <Header />
       <Main>
         {status === "loading" && <Loader />}
